@@ -1,0 +1,71 @@
+// $db_query = Yii::$app->getDb()
+        // ->createCommand('SELECT [[title]] from {{articles}} WHERE [[id]] = :id')
+        // ->bindValue(':id', $_GET['id'])
+        // ->queryOne();
+
+        // $db_query = Yii::$app->getDb()
+        // ->createCommand('SELECT [[title]] from {{articles}} WHERE [[id]] = :id AND [[status]] = :status')
+        // ->bindValues([':id' => $_GET['id'], ':status' => $_GET['status']])
+        // ->queryAll();
+
+        // $db_query_update = Yii::$app->getDb()
+        // ->createCommand('UPDATE {{articles}} SET [[status]] = 2 WHERE [[id]] = 1')
+        // ->execute();
+
+        // $db_query_insert = Yii::$app->getDb()
+        // ->createCommand()
+        // ->insert('articles', [
+        //     'title' => 'Lorem Ipsum',
+        //     'category' => 1,
+        //     'short_description' => 'Lorem Ipsum Framework Yii2',
+        //     'author_name' => 'Jose Francisco',
+        //     'author_email' => 'josefrancisco@datac.com.br',
+        //     'content' => 'estamos aprendendo como fazer consulta pelo banco de dados e inserir dados usando o insert',
+        // ])
+        // ->execute();
+
+        // $db_query_batch_insert = Yii::$app->getDb()
+        // ->createCommand()
+        // ->batchInsert('articles', ['title', 'category', 'short_description', 'author_name', 'author_email', 'content'], 
+        // [
+        //     ['BachInsert', 1, 'Inserção de dados', 'Jose Francisco', 'josefrancisco@datac.com.br', 'inserindo vários dados utilizando bacthinsert'],
+        //     ['BachInsert II', 1, 'Inserção de dados II', 'Jose Francisco', 'josefrancisco@datac.com.br', 'inserindo vários dados utilizando bacthinsert II'],
+        // ])
+        // ->execute();
+
+        // $db_query_delete = Yii::$app->getDb()
+        // ->createCommand()
+        // ->delete('articles', 'ID IN (11, 12, 13)')
+        // ->execute();
+
+        // $sql = Yii::$app->getDb()
+        // ->createCommand("select * from {{articles}}")
+        // ->getRawSql();
+
+        // $db = Yii::$app->getDb();
+        // $transaction = $db->beginTransaction();
+
+        // try{
+        //     $db->createCommand()->update()->execute();
+        //     $db->createCommand()->delete()->execute();
+        //     $db->createCommand()->insert()->execute();
+        // }catch(\Exception $e){
+        //     $transaction->rollBack();
+        // }
+
+        // $db_query_builder = (new Query())
+        // ->select(['*'])
+        // ->from('{{articles}}')
+        // ->where('[[id]] = :id')
+        // ->andWhere(['like', '[[title]]', 'PHP'])
+        // ->addParams([':id' => $_GET['id']])
+        // ->all();
+
+        // $articles = Articles::find()
+        // ->where(['id' => $id])
+        // ->count();
+        // $articles = Articles::find()
+        // ->indexBy(['id'])
+        // ->all();
+
+        // echo '<pre>'; print_r($articles); die;
