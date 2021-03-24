@@ -41,7 +41,8 @@ class Author extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['name', 'email', 'password'], 'required'],
+            [['name', 'email', 'password'], 'required', 'on' => 'create'],
+            [['name', 'email'], 'required', 'on' => 'update'],
             [['status'], 'integer'],
             [['name', 'email', 'password'], 'string', 'max' => 60],
             [['email' => 'email'], 'unique'],
@@ -58,6 +59,7 @@ class Author extends ActiveRecord implements IdentityInterface
             'id' => 'ID',
             'name' => 'Nome do Autor',
             'email' => 'Email do Autor',
+            'password' => 'Senha de Acesso',
             'status' => 'Status',
         ];
     }

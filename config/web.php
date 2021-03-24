@@ -52,6 +52,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'myiidium/read/<id:\d+>/<slug:[-a-zA-Z0-9]+>' => 'myiidium/read',
+                'myiidium/profile/<id:\d+>/<name:[a-zA-Z0-9- ]*>' => 'myiidium/profile',
             ],
         ],
     ],

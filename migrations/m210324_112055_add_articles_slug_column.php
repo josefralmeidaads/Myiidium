@@ -12,7 +12,7 @@ class m210324_112055_add_articles_slug_column extends Migration
      */
     public function safeUp()
     {
-
+        $this->addColumn('{{articles}}', '[[slug]]', $this->string(60)->after('[[title]]'));
     }
 
     /**
@@ -20,8 +20,6 @@ class m210324_112055_add_articles_slug_column extends Migration
      */
     public function safeDown()
     {
-        echo "m210324_112055_add_articles_slug_column cannot be reverted.\n";
-
-        return false;
+        $this->dropColumn('{{articles}}', '[[slug]]');
     }
 }

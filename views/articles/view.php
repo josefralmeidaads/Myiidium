@@ -22,6 +22,7 @@ use yii\widgets\DetailView;
   'model' => $model,
   'attributes' => [
     'title', 
+    'slug',
     [
       'label' => $model->getAttributeLabel('category_id'),
       'value' => $model->category->name,

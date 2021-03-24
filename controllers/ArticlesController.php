@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\controllers\filters\ArticleOwnerFilter;
 use app\forms\ArticlesSearchForm;
 use app\models\Articles;
+use DateTime;
 use Yii;
 use yii\filters\AccessControl;
 
@@ -78,6 +79,10 @@ class ArticlesController extends \yii\web\Controller
     {
         $msg = ($model->isNewRecord ? 'cadastrado' : 'atualizado');
         $model->author_id = Yii::$app->getUser()->identity->id;
+
+        if($model->isPublished()){
+          $model->published_date = (new DateTime())->format('Y-m-d');
+        }
 
         if(!$model->validate()){
             Yii::$app->getSession()->addFlash('error', $model->getErrorsToString());

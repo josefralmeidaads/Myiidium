@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\core\activeRecord\ErrorsToString;
 use Yii;
+use yii\behaviors\SluggableBehavior;
 use yii\db\ActiveRecord;
 
 /**
@@ -13,6 +14,7 @@ use yii\db\ActiveRecord;
  * @property int $author_id
  * @property int $category_id
  * @property string $title
+ * @property string $slug
  * @property string $short_description
  * @property int $likes
  * @property string $status
@@ -32,6 +34,18 @@ class Articles extends ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+     public function behaviors()
+     {
+         return [
+             [
+                'class' => SluggableBehavior::class,
+                'attribute' => 'title',
+                'slugAttribute' => 'slug',
+             ],
+         ];
+     }
+
     public static function tableName()
     {
         return '{{articles}}';
@@ -49,7 +63,7 @@ class Articles extends ActiveRecord
             [['published_date', 'created_at'], 'safe'],
             ['published_date', 'date', 'format' => 'php:Y-m-d'],
             ['created_at', 'datetime', 'format' => 'php:Y-m-d H:i:s'],
-            [['title', 'short_description'], 'string', 'max' => 60],
+            [['title', 'short_description', 'slug'], 'string', 'max' => 60],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => Author::class, 'targetAttribute' => ['author_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']],
             ['status', 'in', 'range' => array_keys(Articles::getStatusList())],
@@ -66,6 +80,7 @@ class Articles extends ActiveRecord
             'author_id' => 'Autor',
             'category_id' => 'Categoria',
             'title' => 'Título',
+            'slug' => 'Slug',
             'short_description' => 'Descrição Curta',
             'likes' => 'Curtidas',
             'status' => 'Status',
@@ -117,5 +132,9 @@ class Articles extends ActiveRecord
           return false;
       }
       return true;
+    }
+
+    public function isPublished():bool{
+        return (int)$this->status === static::STATUS_PUBLISHED;
     }
 }

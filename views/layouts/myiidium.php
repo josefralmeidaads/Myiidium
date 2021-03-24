@@ -42,7 +42,7 @@ AppAsset::register($this);
 
     $privateItems = [
         ['label' => 'Meus Artigos', 'url' => ['/articles']],
-        ['label' => 'Perfil', 'url' => ['/authors/update/'.Yii::$app->getUser()->id]],
+        ['label' => 'Perfil', 'url' => ['/myiidium/profile/'.(Yii::$app->getUser()->isGuest ? '' : Yii::$app->getUser()->identity->id).'/'.( Yii::$app->getUser()->isGuest ? '' : Yii::$app->getUser()->identity->name)]],
         ['label' => 'Logout ('.(Yii::$app->getUser()->isGuest ? '' : Yii::$app->getUser()->identity->name).')', 'url' => ['/myiidium/logout']],
     ];
 

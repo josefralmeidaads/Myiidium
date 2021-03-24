@@ -12,9 +12,9 @@ class m210319_112600_add_authors_auth_fields extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('{{authors}}', '[[password]]', $this->string(60)->notNull()->after('email'));
-        $this->addColumn('{{authors}}', '[[access_token]]', $this->string(100)->unique()->defaultValue(null)->after('password'));
-        $this->addColumn('{{authors}}', '[[auth_key]]', $this->string(100)->unique()->defaultValue(null)->after('access_token'));
+        // $this->addColumn('{{authors}}', '[[password]]', $this->string(60)->notNull()->after('email'));
+        // $this->addColumn('{{authors}}', '[[access_token]]', $this->string(100)->unique()->defaultValue(null)->after('password'));
+        // $this->addColumn('{{authors}}', '[[auth_key]]', $this->string(100)->unique()->defaultValue(null)->after('access_token'));
 
         $authors = $this->getDb()
         ->createCommand('select * from {{authors}}')
